@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\Homework6">
+      <UniqueIdentifier>{b766f92c-af30-4136-93cb-432885564f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Homework2">
+      <UniqueIdentifier>{d8fd898f-69fe-4664-9c86-d4de64e2ce5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Homework5">
+      <UniqueIdentifier>{29215d27-6e41-4552-9eb1-78bcfaf86189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Homework4">
+      <UniqueIdentifier>{8e26da8d-6876-4fea-b510-308b50e734cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Homework7">
+      <UniqueIdentifier>{ff57314e-4e97-4a57-b804-15b712f49098}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Homework8">
+      <UniqueIdentifier>{9154af01-4381-477f-8cc9-1daca3ace854}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Homework6_1.cpp">
+      <Filter>소스 파일\Homework6</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework6_2.cpp">
+      <Filter>소스 파일\Homework6</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework2_1.cpp">
+      <Filter>소스 파일\Homework2</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework2_2.cpp">
+      <Filter>소스 파일\Homework2</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework5_1.cpp">
+      <Filter>소스 파일\Homework5</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework5_2.cpp">
+      <Filter>소스 파일\Homework5</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework5_3.cpp">
+      <Filter>소스 파일\Homework5</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework4.cpp">
+      <Filter>소스 파일\Homework4</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework8_1.cpp">
+      <Filter>소스 파일\Homework8</Filter>
+    </ClCompile>
+    <ClCompile Include="x64\Homework8_2.cpp">
+      <Filter>소스 파일\Homework8</Filter>
+    </ClCompile>
+    <ClCompile Include="Homework7.cpp">
+      <Filter>소스 파일\Homework7</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

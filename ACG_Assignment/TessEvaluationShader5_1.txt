@@ -1,0 +1,28 @@
+#version 400
+#extension GL_ARB_tessellation_shader: enable
+
+layout(isolines, equal_spacing) in;
+
+in vec3 tesColor[];
+
+out vec3 fColor;
+
+void main(){
+
+	fColor = tesColor[0];
+
+	vec4 p0 = gl_in[0].gl_Position;
+	vec4 p1 = gl_in[1].gl_Position;
+	vec4 p2 = gl_in[2].gl_Position;
+	vec4 p3 = gl_in[3].gl_Position;
+
+	//여기부터 끝까지는 수정하지 않아도 됨.
+	float u = gl_TessCoord.x;
+
+	float b0 = (1. - u) * (1. - u) * (1. - u);
+	float b1 = 3. * u * (1. - u) * (1. - u);
+	float b2 = 3. * u * u * (1. - u);
+	float b3 = u * u * u;
+
+	gl_Position = b0 * p0 + b1 * p1 + b2 * p2 + b3 * p3;
+}

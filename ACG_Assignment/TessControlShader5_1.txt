@@ -1,0 +1,26 @@
+#version 400
+#extension GL_ARB_tessellation_shader: enable
+
+uniform float uOuter1;
+
+layout(vertices = 4) out;
+
+in vec3 tcsColor[];
+
+out vec3 tesColor[];
+
+void main(){
+
+	gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;
+	
+	if(gl_InvocationID == 0){
+		gl_TessLevelOuter[0] = 1;
+		gl_TessLevelOuter[1] = uOuter1;
+	}
+
+	//gl_TessLevelOuter[0] = 1;
+	//gl_TessLevelOuter[1] = uOuter1;
+
+	tesColor[gl_InvocationID] = tcsColor[gl_InvocationID];
+
+}

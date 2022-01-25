@@ -1,0 +1,65 @@
+#version 400
+#extension GL_ARB_tessellation_shader: enable
+
+layout(isolines, equal_spacing) in;
+
+in vec3 tesColor[];
+
+out vec3 fColor;
+
+void main(){
+
+	fColor = tesColor[0];
+
+	//control point
+	vec4 p0 = gl_in[0].gl_Position;
+	vec4 p1 = gl_in[1].gl_Position;
+	vec4 p2 = gl_in[2].gl_Position;
+	vec4 p3 = gl_in[3].gl_Position;
+
+	
+	//Knot 만들기: Non-Uniform
+	float knot[11] = float[](0.0, 1.4, 2.2, 3.8, 4.5, 5.0, 6.2, 7.5, 8.0, 9.4, 10.0);
+
+
+	float u = gl_TessCoord.x;		//여기를 어떻게 변경해야 하는지 모르겠음
+	
+
+	//basis function 만들기
+	
+	//d = 1인 경우, 자신의 범위에서만 1이고, 다른 범위에서는 0
+	float b1[10];
+	int i, j;
+	for(i = 0; i < 10; i++){
+		for(j = 0; j < 10; j++){
+			if((u >= knot[i]) && (u < knot[i+1])){
+				if(i == j)
+					b1[j] == 1.0f;
+				else
+					b1[j] == 0.0f;
+			}
+		}
+	}
+
+	//d = 2, 3, 4
+	int k;
+	float b2[9];
+	for(k = 0; k < 9; k++){
+		b2[k] == ((u - knot[k]) / (knot[k+1] - knot[k])) * b1[k] + ((knot[k+2] - u) / (knot[k+2] - knot[k+1])) * b1[k+1];
+	}
+
+	int l;
+	float b3[8];
+	for(l = 0; l < 8; l++){
+		b3[l] == ((u - knot[l]) / (knot[l+2] - knot[l])) * b2[l] + ((knot[l+3] - u) / (knot[l+3] - knot[l+1])) * b2[l+1];
+	}
+
+	int n;
+	float b4[7];
+	for(n = 0; n < 7; n++){
+		b4[n] == ((u - knot[n]) / (knot[n+3] - knot[n])) * b3[n] + ((knot[n+4] - u) / (knot[n+4] - knot[n+1])) * b3[n+1];
+	}
+	
+	
+	gl_Position = b4[0] * p0 + b4[1] * p1 + b4[2] * p2 + b4[3] * p3;
+}

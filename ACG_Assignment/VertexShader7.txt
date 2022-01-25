@@ -1,0 +1,12 @@
+#version 400 core
+
+in vec3 Position; 
+//in vec3 Color;
+in vec2 Texcoords; 
+
+out vec2 fs_Texcoords; 
+
+void main(void) {   
+	fs_Texcoords = Texcoords;   
+	gl_Position = vec4(Position, 1.0); 
+}

@@ -1,0 +1,11 @@
+#version 400 core
+
+uniform sampler2D u_Image;
+
+in vec2 fs_Texcoords; 
+
+out vec4 out_Color;
+
+void main(void) {   
+	out_Color = texture(u_Image, fs_Texcoords); 
+}

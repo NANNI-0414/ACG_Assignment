@@ -1,0 +1,47 @@
+#version 400
+#extension GL_ARB_tessellation_shader: enable
+
+layout(isolines, equal_spacing) in;
+
+uniform mat4 m;
+
+in vec3 tesColor[];
+
+out vec3 fColor;
+
+void main(){
+
+	fColor = tesColor[0];
+
+	//control point
+	vec4 p0 = gl_in[0].gl_Position;
+	vec4 p1 = gl_in[1].gl_Position;
+	vec4 p2 = gl_in[2].gl_Position;
+	vec4 p3 = gl_in[3].gl_Position;
+
+
+	//control point 행렬 만들기
+	mat4 p = mat4(p0, p1, p2, p3);
+
+
+	//m과 p는 column major 행렬이므로 각각을 transpose한 행렬 만들기
+	mat4 pt = transpose(p);
+	mat4 mt = transpose(m);
+
+
+	float u = gl_TessCoord.x;
+	
+
+	//basis function 만들기
+	float b0 = u * u * u;
+	float b1 = u * u;
+	float b2 = u;
+	float b3 = 1;
+	
+
+	//basis function을 벡터로 만들기
+	vec4 t = vec4(b0, b1, b2, b3); 
+
+
+	gl_Position = t * mt * pt;
+}

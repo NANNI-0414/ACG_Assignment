@@ -1,0 +1,10 @@
+
+#version 400 core
+
+in vec4 vtxPosition;
+
+void main()
+{	
+	gl_Position = vtxPosition;
+	//gl_PointSize = 10.0f;
+}

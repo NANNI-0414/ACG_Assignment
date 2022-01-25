@@ -1,0 +1,36 @@
+#version 330 core
+
+layout (lines_adjacency) in; // How to draw LINES_ADJACENCY ? Look glDrawArrays or glDrawElements manual 
+layout (line_strip, max_vertices = 128) out; 
+
+uniform int tess;
+
+in vec3 v2gColor[];	//예시 코드에 있지 않던 내용, 필요하다고 해서 내가 따로 추가함.
+
+out vec3 g2fColor;
+
+void main(){
+	float du = 1.0/float(tess); 
+	float u = 0; 
+
+	for (int i = 0; i<=tess; i++) {
+		float term1 = 1.0 - u; 
+		float term2 = term1*term1;
+		float term3 = term1*term2; 
+		float u2 = u*u; 
+		float u3 = u*u2; 
+
+		vec4 p = term3 * gl_in[0].gl_Position       
+				+ 3.0 * u * term2 * gl_in[1].gl_Position       
+				+ 3.0 * u2 * term1 * gl_in[2].gl_Position       
+				+ u3 * gl_in[3].gl_Position; 
+
+		gl_Position = p; 
+
+		//output color를 정하는 것은 예시코드에 포함되어있지 않았는데, 여기 추가되어야 함.
+		g2fColor = v2gColor[0];		//이렇게 해서 되긴 했으나, 이렇게 해도 되는 게 맞을지 모르겠음.
+		EmitVertex(); 
+		u += du;
+	}
+	EndPrimitive(); 
+}
